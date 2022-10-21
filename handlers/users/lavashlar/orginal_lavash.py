@@ -11,25 +11,23 @@ async def orginal_lavash_def(call:CallbackQuery,state:FSMContext):
      await call.message.delete()
      await call.message.answer_photo(file, caption='<b>Orginal Lavash</b>\n\nNarx:25000 so\'m\n'
                                                    'Iltimos kerakli miqdorni tanlang!', reply_markup=tanlanma_keyboard(0))
-     list1.pop()
+     list1.clear()
      await state.set_state('orginal_lavash')
 
 @dp.callback_query_handler(state='orginal_lavash')
 async def orginal_lavash_state(call:CallbackQuery,state:FSMContext):
      data = call.data
-
+     y = ''
      if len(list1)==0 and data=='joylash':
           await call.answer(text='Siz hech qancha mahsulot tanlamadingiz!',show_alert=True)
      elif data=='joylash' and len(list1)!=0:
           for i in list1:
-               global y
-               y = str()
-               y+=i
+               y+=str(i)
           y = int(y)
           db.add_product(
                     id=call.from_user.id,
                     name=call.from_user.full_name,
-                    productname='orginal lavash',
+                    productname='Orginal lavash',
                     quantity=y,
                     price=25000
                )
@@ -44,10 +42,10 @@ async def orginal_lavash_state(call:CallbackQuery,state:FSMContext):
          await call.message.answer_photo(file, caption='<b>Birini tanlang!😊</b>', reply_markup=lavash_menu)
          list1.clear()
          await state.finish()
-
-
      else:
           await call.message.edit_reply_markup(reply_markup=tanlanma_keyboard(data))
+          await call.answer(cache_time=1)
+
 
 
 

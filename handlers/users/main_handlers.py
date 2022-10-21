@@ -82,7 +82,3 @@ async def order_buying(message:Message):
 
     await message.answer(text='<b>Davom etamizmi? ☺</b>️',reply_markup=menu_keyboard)
 
-@dp.callback_query_handler()
-async def universal(call:CallbackQuery):
-    await call.answer('Bu bo\'limga mahsulotlar qo\'shilmagan\nLavashlar bo\'limiga o\'ting!')
-

@@ -18,13 +18,12 @@ async def pishloqli_lavash(call:CallbackQuery,state:FSMContext):
 @dp.callback_query_handler(state='pishloqli_kichik_lavash')
 async def orginal_lavash_state(call:CallbackQuery,state:FSMContext):
      data = call.data
+     y=''
      if len(list1)==0 and data=='joylash':
           await call.answer(text='Siz hech qancha mahsulot tanlamadingiz!',show_alert=True)
      elif data=='joylash' and len(list1)!=0:
           for i in list1:
-               global y
-               y = str()
-               y+=i
+               y+=str(i)
           y = int(y)
           db.add_product(
                     id=call.from_user.id,
@@ -48,6 +47,8 @@ async def orginal_lavash_state(call:CallbackQuery,state:FSMContext):
 
      else:
           await call.message.edit_reply_markup(reply_markup=tanlanma_keyboard(data))
+          await call.answer(cache_time=1)
+
 
 
 

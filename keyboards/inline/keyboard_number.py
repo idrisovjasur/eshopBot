@@ -1,29 +1,22 @@
 from aiogram.types import InlineKeyboardButton,InlineKeyboardMarkup
 
 list1 = []
-# baza = {'orginal_lavash':[],'orginal_kichik_lavash':[],'pishloqli_lavash':[],'pishloqli_kichik_lavash':[]}
-try:
- def tanlanma_keyboard(x):
-    try:
-        if x=='drop':
-            if len(list1)==0:
+def tanlanma_keyboard(x):
+    if x=='drop':
+        if len(list1)==1:
+                list1.clear()
                 y = 0
-            elif list1[0]==0:
-                y = 0
-            else:
-                list1.pop()
-                y = ''
-                for i in list1:
-                    y+=str(i)
-        elif x=='joylash':
-            list1.clear()
-            y=0
         else:
+            y=''
+            list1.pop()
+            for i in list1:
+                y+=str(i)
+    else:
            list1.append(x)
            y = str()
            for i in list1:
                 y+=str(i)
-        tanlanma_keyboard = InlineKeyboardMarkup(
+    tanlanma_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(text=f'Tanlangan: {y}',callback_data='new'),
@@ -58,12 +51,9 @@ try:
 
        ],
        )
-    except:
-        pass
+
 
     return tanlanma_keyboard
 
-except:
-    pass
 
 
