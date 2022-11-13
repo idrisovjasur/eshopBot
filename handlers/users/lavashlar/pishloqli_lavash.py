@@ -8,7 +8,7 @@ from loader import dp,db
 
 @dp.callback_query_handler(text='pishloqli_lavash')
 async def pishloqli_lavash(call:CallbackQuery,state:FSMContext):
-     file = 'AgACAgIAAxkBAAIJLmNPyxnHhhbR1kIzzwraJGIYTSGNAALpwTEbdWSASrl4qhEP1eqxAQADAgADeQADKgQ'
+     file = 'AgACAgIAAxkBAAM6Y2-mYDXeQMc9M8WAhLct5zvHpNoAApS_MRuihXhLpju5yr0F3_oBAAMCAAN5AAMrBA'
      await call.message.answer_photo(file, caption='<b>Pishloqli lavash</b>\n\nNarx:22000 so\'m\n'
                                                    'Iltimos kerakli miqdorni tanlang!', reply_markup=tanlanma_keyboard(0))
      list1.pop()
@@ -40,7 +40,7 @@ async def orginal_lavash_state(call:CallbackQuery,state:FSMContext):
           list1.clear()
      elif call.data == 'orqaga':
          await call.message.delete()
-         file = 'AgACAgIAAxkBAANUY0f7R3HyX0oOUBbkAAGTW6FJMu4EAAJ6vzEbau1BSl__-7qopCj9AQADAgADeQADKgQ'
+         file = 'AgACAgIAAxkBAAMkY2-lEmXZgTAaN4PslS7Q42FhXEkAAoy_MRuihXhLerCeGCIy2PUBAAMCAAN5AAMrBA'
          await call.message.answer_photo(file, caption='<b>Birini Tanlang!</b>', reply_markup=lavash_menu)
          list1.clear()
          await state.finish()

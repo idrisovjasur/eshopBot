@@ -8,12 +8,13 @@ from loader import dp,db
 
 @dp.callback_query_handler(text='pishloqli_kichik_lavash')
 async def pishloqli_lavash(call:CallbackQuery,state:FSMContext):
-     file = 'AgACAgIAAxkBAAIJMGNPy3_a5hyGkuzWgkDLuVPyDwPEAALqwTEbdWSASi3fObEqsjuuAQADAgADeQADKgQ'
-     await call.message.answer_photo(file, caption='<b>Pishloqli kichik lavashm</b>\n\nNarxi:18000\n'
+     file = 'AgACAgIAAxkBAANCY2-mqqPOUW3HsmeOHM_UICs7SFAAApe_MRuihXhLyTDcHBryb-4BAAMCAAN5AAMrBA'
+     await call.message.answer_photo(file, caption='<b>Pishloqli kichik lavash</b>\n\nNarxi:18000\n'
                                                    'Iltimos kerakli miqdorni kiriting!', reply_markup=tanlanma_keyboard(0))
      list1.pop()
      await state.set_state('pishloqli_kichik_lavash')
      await call.message.delete()
+
 
 @dp.callback_query_handler(state='pishloqli_kichik_lavash')
 async def orginal_lavash_state(call:CallbackQuery,state:FSMContext):
@@ -33,7 +34,7 @@ async def orginal_lavash_state(call:CallbackQuery,state:FSMContext):
                     price=18000
                )
           await call.answer("Buyurtmangiz qabul qilindi,davom etamizmi?",show_alert=True)
-          file = 'AgACAgIAAxkBAAMaY0fwH5JoMlbLuFrAB9cWF_qyHGsAAk-_MRtq7UFK3AxrzMjwU-oBAAMCAAN5AAMqBA'
+          file = 'AgACAgIAAxkBAANCY2-mqqPOUW3HsmeOHM_UICs7SFAAApe_MRuihXhLyTDcHBryb-4BAAMCAAN5AAMrBA'
           await call.message.delete()
           await call.message.answer_photo(file, caption='<b>Birini Tanlang!</b>', reply_markup=menu_keyboard)
           await state.finish()
@@ -48,7 +49,5 @@ async def orginal_lavash_state(call:CallbackQuery,state:FSMContext):
      else:
           await call.message.edit_reply_markup(reply_markup=tanlanma_keyboard(data))
           await call.answer(cache_time=1)
-
-
 
 

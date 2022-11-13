@@ -1,3 +1,5 @@
+import asyncio
+import pyqrcode
 from aiogram.types import ContentType
 from aiogram.types.callback_query import CallbackQuery
 from aiogram.dispatcher import FSMContext
@@ -10,7 +12,7 @@ from loader import dp,db
 
 @dp.callback_query_handler(text='lavash')
 async def lavash_main(call:CallbackQuery,state:FSMContext):
-    file = 'AgACAgIAAxkBAAMaY0fwH5JoMlbLuFrAB9cWF_qyHGsAAk-_MRtq7UFK3AxrzMjwU-oBAAMCAAN5AAMqBA'
+    file = 'AgACAgIAAxkBAAMkY2-lEmXZgTAaN4PslS7Q42FhXEkAAoy_MRuihXhLerCeGCIy2PUBAAMCAAN5AAMrBA'
     await call.message.delete()
     await call.message.answer_photo(file, caption='<b>Birini Tanlang!</b>', reply_markup=lavash_menu)
 
@@ -73,12 +75,18 @@ async def buy_history_product(call:CallbackQuery,state:FSMContext):
         'Bunda telefoningizda manzilni aniqlash funksiyasi yoqilgan' \
         ' bo’lishi lozim.'
     await call.message.answer(text=msg,reply_markup=location)
-
+import os
 @dp.message_handler(content_types=ContentType.LOCATION)
 async def order_buying(message:Message):
-    await message.answer('Rahmat Malumotlaringiz qabul qilindi.\n'
-                         'Ammo men rasmiy bot emasman,men sotuvdaman!\n'
-                         'Meni sotib olgach,mahsulotingizni yoningizga yetkazib beraman!',reply_markup=ReplyKeyboardRemove())
+    await message.answer('Kuting.....',reply_markup=ReplyKeyboardRemove())
+    await asyncio.sleep(4)
+    text = pyqrcode.create('8600312926661675', error='L')
+    text.png('code.png', scale=10)
+    await message.answer_photo(photo=open('code.png', 'rb'),caption='<b>QrCode\n'
+                                                                    'Karta Raqam\n'
+                                                                    ' └ 8600312926661675</b>\n\n'
+                                                                    'To\'lov qiling!')
+    os.remove('code.png')
 
-    await message.answer(text='<b>Davom etamizmi? ☺</b>️',reply_markup=menu_keyboard)
+
 

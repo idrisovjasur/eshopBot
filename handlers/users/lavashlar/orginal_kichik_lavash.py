@@ -8,7 +8,7 @@ from loader import dp,db
 
 @dp.callback_query_handler(text='orginal_kichik_lavash')
 async def orginal_lavash_kichik(call:CallbackQuery,state:FSMContext):
-     file = 'AgACAgIAAxkBAAIFY2NLoDF9JSS7vMwoJ1Tyb6724HnOAAJ7uzEbTtlgSh58naHiV1L4AQADAgADeQADKgQ'
+     file = 'AgACAgIAAxkBAAMyY2-l-Xj5i8NmIIrSynDXh3p8aK4AApK_MRuihXhLt-_DeAR0nCkBAAMCAAN5AAMrBA'
      await call.message.answer_photo(file, caption='<b>Orginal kichik lavash</b>\n\nNarx:22000 so\'m\n'
                                                    'Iltimos kerakli miqdorni tanlang!', reply_markup=tanlanma_keyboard(0))
 
@@ -40,7 +40,7 @@ async def orginal_lavash_state(call:CallbackQuery,state:FSMContext):
           list1.clear()
      elif call.data == 'orqaga':
          await call.message.delete()
-         file = 'AgACAgIAAxkBAANUY0f7R3HyX0oOUBbkAAGTW6FJMu4EAAJ6vzEbau1BSl__-7qopCj9AQADAgADeQADKgQ'
+         file = 'AgACAgIAAxkBAAMkY2-lEmXZgTAaN4PslS7Q42FhXEkAAoy_MRuihXhLerCeGCIy2PUBAAMCAAN5AAMrBA'
          await call.message.answer_photo(file, caption='<b>Birini Tanlang!😊</b>', reply_markup=lavash_menu)
          list1.clear()
          await state.finish()
