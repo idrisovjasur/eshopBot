@@ -12,7 +12,7 @@ class Database:
         if not parameters:
             parameters = ()
         connection = self.connection
-        connection.set_trace_callback(logger)
+        # connection.set_trace_callback(logger)
         cursor = connection.cursor()
         data = None
         cursor.execute(sql, parameters)
@@ -108,10 +108,3 @@ class Database:
         sql, parameters = self.format_args(sql, kwargs)
         return self.execute(sql, parameters=parameters,commit=True)
 
-def logger(statement):
-    print(f"""
-_____________________________________________________        
-Executing: 
-{statement}
-_____________________________________________________
-""")

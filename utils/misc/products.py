@@ -25,7 +25,7 @@ class Product:
     send_email_to_provider: bool = False
     is_flexible: bool = False
 
-    provider_token: str = config.PROVIDER_TOKEN
+
 
     def generate_invoice(self):
         return self.__dict__
